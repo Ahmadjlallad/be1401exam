@@ -7,32 +7,43 @@ const digimonDATA = async (req, res) => {
     );
     res.status(200).send(digimon.data);
   } catch (err) {
-    console.log(err);
+    res.send(err);
   }
 };
 
 const getDid = async (req, res) => {
   const email = req.query.email;
-  console.log(email);
   try {
     const digimon = await DigimonModel.find({ email });
     res.status(200).send(digimon);
   } catch (err) {
-    console.log(err);
+    res.send(err);
   }
 };
 
-const createDid = (req, res) => {
-  DigimonModel.create(req.body);
+const createDid = async (req, res) => {
+  try {
+    const test = await DigimonModel.create(req.body);
+    res.send(test);
+  } catch (err) {
+    res.send(err);
+  }
 };
-const updateDid = (req, res) => {
-  DigimonModel.findByIdAndUpdate(req.params.id, req.body);
+const updateDid = async (req, res) => {
+  try {
+    const test = await DigimonModel.findByIdAndUpdate(req.params.id, req.body);
+    res.send(test);
+  } catch (err) {
+    res.send(err);
+  }
 };
-const deleteDid = (req, res) => {
-  console.log(req.params.id);
-  DigimonModel.findByIdAndRemove(req.params.id)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+const deleteDid = async (req, res) => {
+  try {
+    const test = await DigimonModel.findByIdAndRemove(req.params.id);
+    res.send(test);
+  } catch (err) {
+    res.send(err);
+  }
 };
 
 module.exports = { digimonDATA, getDid, updateDid, deleteDid, createDid };

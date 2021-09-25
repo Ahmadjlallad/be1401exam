@@ -16,6 +16,7 @@ const {
   deleteDid,
   createDid,
 } = require("./Crud");
+
 //  to do create the schema done
 // get from the api and then send to the user
 app.get("/didapi", digimonDATA);
@@ -26,4 +27,6 @@ app.delete("/did/:id", deleteDid);
 // app.delete("/did/:id", (req,res)=>{
 //     req.
 // });
-app.listen(process.env.PORT, () => console.log("server is running"));
+app.listen(process.env.PORT, () =>
+  console.log("server is running" + process.env.PORT)
+);
